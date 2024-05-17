@@ -2,41 +2,25 @@ package model.entities;
 
 import java.time.Instant;
 
-public class Mentoring {
-    private String tittle;
-    private String describe;
+public class Mentoring extends Content{
+
     private Instant date;
 
-    public Mentoring(String tittle, String describe, Instant date) {
-        this.tittle = tittle;
-        this.describe = describe;
+    public Mentoring(String title, String describe, Instant date) {
+        super(title, describe);
         this.date = date;
     }
 
-    public String getTittle() {
-        return tittle;
-    }
 
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
-    }
-
-    public String getDescribe() {
-        return describe;
-    }
-
-    public void setDescribe(String describe) {
-        this.describe = describe;
-    }
-
-    public Instant getWorkload() {
+    public Instant getDate() {
         return date;
     }
 
-    public void setWorkload(Instant date) {
+    public void setDate(Instant date) {
         this.date = date;
     }
 
+    @Override
     public Double calcXp(){
         return 0.0;
     }
@@ -44,9 +28,9 @@ public class Mentoring {
     @Override
     public String toString() {
         return "Mentoring{" +
-                "tittle='" + tittle + '\'' +
-                ", describe='" + describe + '\'' +
-                ", date=" + date +
+                "Title=" + getTitle() +
+                "Describe=" + getDescribe() +
+                "date=" + getDate() +
                 '}';
     }
 }
