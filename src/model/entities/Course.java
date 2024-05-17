@@ -18,8 +18,8 @@ public class Course extends Content{
     }
 
     @Override
-    public Double calcXp() {
-        return 0.0;
+    public Integer calcXp() {
+        return XP_DEFAULT * workload;
     }
 
     @Override

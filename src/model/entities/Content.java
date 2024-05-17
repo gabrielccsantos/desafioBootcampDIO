@@ -1,7 +1,7 @@
 package model.entities;
 
 public abstract class Content {
-    protected static final Double XP_DEFAULT = 10.0;
+    protected static final Integer XP_DEFAULT = 10;
     private String title;
     private String describe;
 
@@ -27,6 +27,6 @@ public abstract class Content {
         this.describe = describe;
     }
 
-    public abstract Double calcXp();
+    public abstract Integer calcXp();
 
 }

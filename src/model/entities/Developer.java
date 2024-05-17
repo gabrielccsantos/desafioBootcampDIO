@@ -2,6 +2,7 @@ package model.entities;
 
 import java.util.LinkedHashSet;
 import java.util.Objects;
+import java.util.Optional;
 import java.util.Set;
 
 public class Developer {
@@ -24,16 +25,31 @@ public class Developer {
         this.name = name;
     }
 
-    public void subscribe(){
+    public Set<Content> getSubscribeContent(){
+        return subscribeContent;
+    }
 
+    public Set<Content> getFineshedContent(){
+        return fineshedContent;
+    }
+
+    public void subscribe(Bootcamp bootcamp){
+        subscribeContent.addAll(bootcamp.getContentSet());
+        bootcamp.addDevelopers(this);
     }
 
     public void progress(){
-
+        Optional<Content> content = subscribeContent.stream().findFirst();
+        if(content.isPresent()){
+            fineshedContent.add(content.get());
+            subscribeContent.remove(content.get());
+        }else{
+            System.err.println("Não está matriculado em nenhum bootcamp");
+        }
     }
 
-    public Double calcTotalXP(){
-        return 0.0;
+    public Integer calcTotalXP(){
+        return fineshedContent.stream().mapToInt(Content::calcXp).reduce(0, Integer::sum);
     }
 
     @Override

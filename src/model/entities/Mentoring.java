@@ -21,8 +21,8 @@ public class Mentoring extends Content{
     }
 
     @Override
-    public Double calcXp(){
-        return 0.0;
+    public Integer calcXp(){
+        return XP_DEFAULT + 20;
     }
 
     @Override
